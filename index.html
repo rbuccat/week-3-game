@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Psychic</title>
+	<title>Psychic Game</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!--<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">-->
+
 </head>
 <body>
 	<h1>The Psychic Game</h1>
@@ -14,60 +18,9 @@
 
 	<p>Guesses Left: <span id="guess"></span></p>
 
-	<p>Your Guesses so far: <span id="history"></span></p>
+	<p>Your Guesses so far: <span class="effect" id="history"></span></p>
 
-	<script type="text/javascript">
-	var alphabet = "abcdefghijklmnopqrstuvwxyz";
-	var alphabetInArray = alphabet.split("");
-	var winWin = 0;
-	var loseLose = 0;
-	var numGuesses = 9;
-	// Create code to randomly choose one of the three options (Computer) 
-	var computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
+	<script src="assets/javascript/game.js"></script>
 
-	document.getElementById("win").innerHTML = winWin;
-	document.getElementById("loss").innerHTML = loseLose;
-	document.getElementById("guess").innerHTML = numGuesses;
-
-	// Captures Key Clicks
-	document.onkeyup = function(event) {
-
-	// Determines which exact key was selected. Make it lowercase
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	console.log(userGuess);
-	console.log(computerGuess);
-
-
-	if (userGuess == computerGuess) {
-		winWin++;
-		numGuesses = 9;
-		document.getElementById("win").innerHTML = winWin;
-		computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
-		document.getElementById("history").innerHTML = null;
-		console.log("win " + winWin);
-	}
-	else if (userGuess != computerGuess	&& numGuesses === 1) {
-		loseLose++;
-		numGuesses = 9;
-		document.getElementById("loss").innerHTML = loseLose;
-		document.getElementById("guess").innerHTML = numGuesses;
-		computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
-		document.getElementById("history").innerHTML = null;
-		console.log("loss " + loseLose);
-	}
-	else {
-		numGuesses--;
-		var guessWrong = document.createTextNode(userGuess + ", "); 
-		document.getElementById("history").appendChild(guessWrong);
-		console.log("history " + userGuess);
-		document.getElementById("guess").innerHTML = numGuesses;
-		console.log("guess " + numGuesses);
-	}
-
-
-
-}
-	</script>
 </body>
 </html>
