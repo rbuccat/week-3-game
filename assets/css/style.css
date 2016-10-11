@@ -4,9 +4,21 @@
 }
 
 body {
-	font-family: 'emulogic';
 	background-color: #000;
+}
+
+.style {
+	font-family: 'emulogic';
 	color: #fff;
+}
+
+.style h1 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.style p {
+	line-height: 50px;
 }
 
 

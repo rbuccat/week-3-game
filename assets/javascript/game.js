@@ -23,24 +23,20 @@
 	//if the letter guess matches, you win
 	if (userGuess == computerGuess) {
 		winWin++;
-		numGuesses = 9;
-		guessWrong = [];
-		computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
+		gamereset();
 		document.getElementById("win").innerHTML = winWin;
 		document.getElementById("guess").innerHTML = numGuesses;
-		document.getElementById("history").innerHTML = null;
+		document.getElementById("history").innerHTML = guessWrong;
 		alert("You Won! '" + userGuess + "' was my guess.");
 		console.log("win " + winWin);
 	}
 	//if number of guesses = 1 and the next guess is wrong, you lose
 	else if (userGuess != computerGuess	&& numGuesses === 1) {
 		loseLose++;
-		numGuesses = 9;
-		guessWrong = [];
-		computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
+		gamereset();
 		document.getElementById("loss").innerHTML = loseLose;
 		document.getElementById("guess").innerHTML = numGuesses;
-		document.getElementById("history").innerHTML = null;
+		document.getElementById("history").innerHTML = guessWrong;
 		alert("You Lost!");
 		console.log("loss " + loseLose);
 	}
@@ -48,7 +44,7 @@
 	else if(alphabetInArray.indexOf(userGuess) == -1) {
 		alert("Please choose a letter between A-Z. Try again");
 	}
-	//if the userguess doesn't match, number of guesses goes down 1 and the userguess 
+	//if the user guess doesn't match, number of guesses goes down 1 and the userguess 
 	//shows in the history
 	else if (userGuess != computerGuess) {
 		numGuesses--;
@@ -58,4 +54,10 @@
 		console.log("history " + userGuess);
 		console.log("guess " + numGuesses);
 	}
+}
+
+function gamereset() {
+	numGuesses = 9;
+	guessWrong = [];
+	computerGuess = alphabetInArray[Math.floor(Math.random()*alphabetInArray.length)];
 }
